@@ -17,6 +17,8 @@
 <script>
 const STORE='dangwadang_recipe_lab_v1';
 let state=load(), page='recipes', selected=null, tab='recipe', multiplier=1, draft=null;
+window.__dangwadangSyncGetState=()=>state;
+window.__dangwadangSyncSetState=(next)=>{state=next;};
 function load(){try{return JSON.parse(localStorage.getItem(STORE))||{recipes:[],ingredients:[]}}catch(e){return{recipes:[],ingredients:[]}}}
 function save(){localStorage.setItem(STORE,JSON.stringify(state));}
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
